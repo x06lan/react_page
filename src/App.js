@@ -9,6 +9,7 @@ var tool= [
     { src: "./img/jquery.png", name: "jquery", href: "" },
     // { src: "./img/vuejs.png", name: "vue.js", href: "" },
     { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
+    { src: "./img/react.png", name: "react.js", href: "https://github.com/x06lan/react_page" },
     { src: "./img/github.png", name: "github", href: "https://github.com/x06lan" },
     { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
     { src: "./img/opencv.png", name: "opencv", href: "" },
@@ -40,6 +41,7 @@ let site = [
     { name: "human eye", src: "./img/work/eye.png", href: "https://www.artstation.com/artwork/B1AmPm",time:20210825},
     { name: "house", src: "./img/work/house.png", href: "https://www.artstation.com/artwork/3d5X62",time:20210827},
     { name: "helluva boss blitzo gun", src: "./img/work/gun.png", href: "https://www.artstation.com/artwork/NxXnZN",time:20210829},
+    { name: "cloth", src: "./img/work/girl_with_cloth.png", href: "https://www.artstation.com/artwork/xYO1z4",time:20210829},
 ]
 let blog = [
     { name: "FFmpeg", src: "./img//blog/ffmpeg.png", href: "https://hackmd.io/@lanx06/ffmpeg" },
