@@ -6,8 +6,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #3c49ff;
+  overflow-x: hidden;
 }
+/* body iframe{
+  width: 0px;
+} */
+#three_canva{
+  position:absolute;
+  z-index: -1;
+}
+#three_background{
+  position:absolute;
 
+  z-index: -1;
+}
+#root{
+  min-width: 440px;
+}
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

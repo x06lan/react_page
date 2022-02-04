@@ -55,6 +55,8 @@ function onDocumentMouseMove( event ) {
 
 }
 function init(targe) {
+	// window.onresize=onWindowResize
+	
   	window.addEventListener('resize', onWindowResize);
 	document.addEventListener( 'mousemove', onDocumentMouseMove );
 	document.addEventListener( 'mouseover', onDocumentMouseMove );
@@ -120,11 +122,24 @@ function init(targe) {
 
 }
 function onWindowResize() {
+	let temp_w=window.innerWidth
+	
+	try {
+		let temp=document.querySelector("#root").offsetWidth
+	  	console.log(window.innerWidth,temp)
 
-  renderer.setSize(window.innerWidth, block_height);
+		if (temp!=""&&temp!=undefined) {
+			temp_w=temp
+		}
+	} catch (error) {
+		
+	}
 
-  camera.aspect = window.innerWidth / block_height;
+  renderer.setSize(temp_w, block_height);
+
+  camera.aspect = temp_w / block_height;
   camera.updateProjectionMatrix();
+//   renderer.domElement.style.width=temp_w+"px"
 
 }
 

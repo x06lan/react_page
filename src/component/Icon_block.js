@@ -1,6 +1,5 @@
 import "./Icon_block.css"
 import React, { Component }  from 'react';
-import { e } from "mathjs";
 class Icon_block extends Component{
     render() {
         if (this.props.data.href == ""){
