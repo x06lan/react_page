@@ -5,19 +5,20 @@ import React from "react";
 import "./App.css";
 var tool= [
 
-    { src: "./img/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
-    { src: "./img/jquery.png", name: "jquery", href: "" },
-    // { src: "./img/vuejs.png", name: "vue.js", href: "" },
-    { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
-    { src: "./img/react.png", name: "react.js", href: "https://github.com/x06lan/react_page" },
-    { src: "./img/github.png", name: "github", href: "https://github.com/x06lan" },
-    { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
-    { src: "./img/opencv.png", name: "opencv", href: "" },
-    // { src: "./img/colab.png", name: "colab", href: "" },
-    { src: "./img/pytorch.png", name: "pythoch", href: "" },
-    { src: "./img/unity.png", name: "unity", href: "" },
-    { src: "./img/unreal.png", name: "unreal", href: "" },
-    { src: "./img/blender.png", name: "blender", href: "" },
+    { src: "./img/tech/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
+    { src: "./img/tech/jquery.png", name: "jquery", href: "" },
+    // { src: "./img/tech/vuejs.png", name: "vue.js", href: "" },
+    { src: "./img/tech/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
+    { src: "./img/tech/react.png", name: "react.js", href: "https://github.com/x06lan/react_page" },
+    { src: "./img/tech/github.png", name: "github", href: "https://github.com/x06lan" },
+    { src: "./img/tech/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
+    { src: "./img/tech/opencv.png", name: "opencv", href: "" },
+    // { src: "./img/tech/colab.png", name: "colab", href: "" },
+    { src: "./img/tech/pytorch.png", name: "pythoch", href: "" },
+    { src: "./img/tech/unity.png", name: "unity", href: "" },
+    { src: "./img/tech/unreal.png", name: "unreal", href: "" },
+    { src: "./img/tech/c++.png", name: "c++", href: "" },
+    { src: "./img/tech/blender.png", name: "blender", href: "" },
 
 ]
 let site = [
@@ -42,12 +43,14 @@ let site = [
     { name: "house", src: "./img/work/house.png", href: "https://www.artstation.com/artwork/3d5X62",time:20210827},
     { name: "helluva boss blitzo gun", src: "./img/work/gun.png", href: "https://www.artstation.com/artwork/NxXnZN",time:20210829},
     { name: "cloth", src: "./img/work/girl_with_cloth.png", href: "https://www.artstation.com/artwork/xYO1z4",time:20210829},
+    { name: "night city", src: "./img/work/night_city.png", href: "https://www.artstation.com/artwork/G82DbW",time:20220319},
 ]
 let blog = [
     { name: "FFmpeg", src: "./img//blog/ffmpeg.png", href: "https://hackmd.io/@lanx06/ffmpeg" },
     { name: "tampermonkey", src: "./img/blog/tampermonkey.png", href: "https://hackmd.io/@lanx06/tampermonkey" },
     { name: "shields.io", src: "./img/blog/shields.io.png", href: "https://hackmd.io/@lanx06/shields" },
-    { name: "git", src: "./img/blog/git.png", href: "https://hackmd.io/@lanx06/git" }
+    { name: "git", src: "./img/blog/git.png", href: "https://hackmd.io/@lanx06/git" },
+    { name: "CSG(Constructive solid geometry)", src: "./img/blog/csg.png", href: "https://hackmd.io/@lanx06/git" }
 
 ]
 class App extends React.Component {
