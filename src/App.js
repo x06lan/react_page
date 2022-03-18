@@ -50,7 +50,7 @@ let blog = [
     { name: "tampermonkey", src: "./img/blog/tampermonkey.png", href: "https://hackmd.io/@lanx06/tampermonkey" },
     { name: "shields.io", src: "./img/blog/shields.io.png", href: "https://hackmd.io/@lanx06/shields" },
     { name: "git", src: "./img/blog/git.png", href: "https://hackmd.io/@lanx06/git" },
-    { name: "CSG(Constructive solid geometry)", src: "./img/blog/csg.png", href: "https://hackmd.io/@lanx06/git" }
+    { name: "CSG(Constructive solid geometry)", src: "./img/blog/csg.png", href: "https://hackmd.io/@lanx06/CSG" }
 
 ]
 class App extends React.Component {
