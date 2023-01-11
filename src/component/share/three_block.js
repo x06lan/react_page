@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {create,all}from 'mathjs'
 import { Perlin } from 'three-noise';
+import React, { Component }  from 'react';
 const math = create(all)
 let noise = new Perlin(math.random());
 let camera, scene, renderer;
@@ -33,8 +34,6 @@ function animation( time ) {
 				cube.scale.x=new_size
 				cube.scale.y=new_size
 				cube.scale.z=new_size
-				
-
 			}
 		}
 	}
@@ -114,7 +113,7 @@ function init(targe) {
 	grid.material.opacity = 0.2; 
 	grid.material.transparent = true;
 	// scene.add( grid );
-	const axisHelper = new THREE.AxisHelper( 5 );	
+	// const axisHelper = new THREE.AxisHelper( 5 );	
 	// scene.add( axisHelper );
 	// const helper = new THREE.PolarGridHelper( 10, 16, 8, 64);
 	// scene.add( helper );
@@ -127,14 +126,12 @@ function onWindowResize() {
 	try {
 		let temp=document.querySelector("#root").offsetWidth
 	  	console.log(window.innerWidth,temp)
-
 		if (temp!=""&&temp!=undefined) {
 			temp_w=temp
 		}
 	} catch (error) {
 		
 	}
-
   renderer.setSize(temp_w, block_height);
 
   camera.aspect = temp_w / block_height;

@@ -1,5 +1,5 @@
-import Image_block_list from "./component/Image_block.js"
-import Icon_block_list from "./component/Icon_block.js"
+import Image_block_list from "./component/share/Image_block.js"
+import Icon_block_list from "./component/share/Icon_block.js"
 // import Headeff from "./component/headline.js"
 import React from "react";
 import "./App.css";

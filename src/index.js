@@ -1,14 +1,17 @@
-import React, { Component }  from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
+import "./component/share/three_block"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import "./component/three_block"
+import React, { Component }  from 'react';
+import ReactDOM from "react-dom/client";
+import { createRoot } from 'react-three-fiber';
 
-ReactDOM.render(
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
     <App />
-  ,
-  document.getElementById('root')
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
