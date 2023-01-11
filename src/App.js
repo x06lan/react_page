@@ -1,8 +1,9 @@
-import Image_block_list from "./component/share/Image_block.js"
-import Icon_block_list from "./component/share/Icon_block.js"
+import Imageblocklist from "./component/share/Image_block.js"
+import Iconblocklist from "./component/share/Icon_block.js"
 // import Headeff from "./component/headline.js"
 import React from "react";
 import "./App.css";
+import ThreeBlock from "./component/share/Three_block.js";
 var tool= [
 
     { src: "./img/tech/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
@@ -58,6 +59,7 @@ class App extends React.Component {
   return (
     <div>
       <div className="head_3d" id="three_canva">
+        <ThreeBlock></ThreeBlock>
         {/* <Headeff></Headeff> */}
       </div>
       <div className="header">
@@ -72,15 +74,15 @@ class App extends React.Component {
       <div className="content">
         <div className="tool">
           <h2 className="name_title"> Tech</h2>
-          <Icon_block_list datas={tool}/>
+          <Iconblocklist datas={tool}/>
         </div>
         <div className="work">
           <h2 className="name_title"> Work</h2>
-          <Image_block_list datas={site}/>
+          <Imageblocklist datas={site}/>
         </div>
         <div className="blog">
           <h2 className="name_title"> Blog</h2>
-          <Image_block_list datas={blog}/>
+          <Imageblocklist datas={blog}/>
         </div>
         <div className="email">
           Email: x065p4mp6@gmail.com

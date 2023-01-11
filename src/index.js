@@ -1,10 +1,9 @@
 import './index.css';
-import "./component/share/three_block"
+import "./component/share/Three_block"
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import React, { Component }  from 'react';
+import React from 'react';
 import ReactDOM from "react-dom/client";
-import { createRoot } from 'react-three-fiber';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

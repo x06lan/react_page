@@ -1,10 +1,8 @@
 import React from "react";
-class sketchfab_block extends React.Component {
-    render(){
-        let src="https://sketchfab.com/models/"+this.props.item_id+"/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark"
-        return(
-        <div className ="sketchfab-embed-wrapper "> 
-            <iframe title="hazbin hotel Alastor mic" 
+function sketchfabBlock(props) {
+    let src="https://sketchfab.com/models/"+props.item_id+"/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark"
+    return (<div className ="sketchfab-embed-wrapper "> 
+        <iframe title="hazbin hotel Alastor mic" 
             frameBorder="0" 
             allowFullScreen={true}
             mozallowfullscreen="true" 
@@ -16,8 +14,7 @@ class sketchfab_block extends React.Component {
             src={src}
             style={{borderRadius:"5% 5% 5% 5%"}}>
         </iframe>
-        </div>)
-    }
+    </div>)
 }
 
-export default sketchfab_block;
+export default sketchfabBlock;
