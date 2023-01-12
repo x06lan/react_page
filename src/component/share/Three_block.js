@@ -1,18 +1,9 @@
-import * as THREE from 'three';
+// import * as THREE from 'three';
 import {Canvas, useFrame } from 'react-three-fiber';
-import {create,all, re}from 'mathjs'
+import {create,all}from 'mathjs'
 import { Perlin } from 'three-noise';
-import React, { Component, useEffect, useRef}  from 'react';
-import { DefaultLoadingManager, MeshDepthMaterial } from 'three';
+import React, { useEffect, useRef}  from 'react';
 
-// 	let noise = new Perlin(math.random());
-// 	let camera, scene, renderer;
-// 	let geometry ,material ,meshs;
-// 	let block_height=600
-// 	let mouse={x:0,y:0}
-// 	let cubes=[]
-// 	let size=10
-// 	let gap=0.2
 	
 // function animation( time ) {
 
@@ -47,59 +38,64 @@ import { DefaultLoadingManager, MeshDepthMaterial } from 'three';
 // 	renderer.render( scene, camera );
 
 // }
-// function onDocumentMouseMove( event ) {
-
-// 	const windowHalfX = window.innerWidth / 2;
-// 	const windowHalfY = window.innerHeight / 2;
-// 	mouse.x = ( event.clientX - windowHalfX ) /windowHalfX/2;
-// 	mouse.y = ( event.clientY - windowHalfY ) / windowHalfY/2;
-
-// }
 function Cube(props){
 	const ref=useRef();
 	useFrame((statu,delta)=>{
-		ref.current.rotation.x+=0.01;
+		// ref.current.rotation.x+=0.01;
 	})
-	console.log(1)
-	
 	return (
       <mesh 
 		{...props.info}
-	 	// scale={props.scale} 
-		// position={props.position}
 		ref={ref}
 		>
-        <boxGeometry />
-        <meshBasicMaterial color={0x00ff00} />
-		{/* <MeshDepthMaterial/> */}
+        <boxGeometry {...props.info}/>
+        {/* <boxGeometry position={props.position} rotation/> */}
+		<meshNormalMaterial/>
       </mesh>
 	)
 }
 function ThreeBlock(props) {
-	const canvasRef=useRef();
-	
-  	// window.addEventListener('resize', onWindowResize);
-	// document.addEventListener( 'mousemove', onDocumentMouseMove );
-	// document.addEventListener( 'mouseover', onDocumentMouseMove );
-
-	let meshs=[]
-	for (let i = 0; i < 10; i++) {
-		let tem={};
-		const math = create(all)
-		tem.position=[math.random(i)-0.5,math.random(i)-0.5,math.random(i)-0.5]
-		// tem.position=[1,1,1]
-		// tem.scale=[1,1,1]
-		tem.scale=[math.random(i),math.random(i),math.random(i)]
-		meshs.push(tem)
+	// const canvasRef=useRef();
+	const math = create(all)
+	let noise = new Perlin(math.random());
+	let block_height=600
+	let mouse={x:0,y:0}
+	let size=10
+	let gap=0.2
+	function onDocumentMouseMove( event ) {
+		const windowHalfX = window.innerWidth / 2;
+		const windowHalfY = window.innerHeight / 2;
+		mouse.x = ( event.clientX - windowHalfX ) /windowHalfX/2;
+		mouse.y = ( event.clientY - windowHalfY ) / windowHalfY/2;
 	}
+	
+	document.addEventListener( 'mousemove', onDocumentMouseMove );
+	document.addEventListener( 'mouseover', onDocumentMouseMove );
+
+	let cubes=[]
+	for (let index_x= 1; index_x <= size; index_x++) {
+		for(let index_y=1; index_y<=size;index_y++){
+			for(let index_z=1; index_z<=size;index_z++){
+				let tem={};
+				// tem.position=[math.random(i)-0.5,math.random(i)-0.5,math.random(i)-0.5]
+				// tem.scale=[math.random(i),math.random(i),math.random(i)]
+				tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
+				// tem.position=[1,1,10]
+				tem.scale=[0.2,0.2,0.2]
+				// tem.scale=[1.0,1.0,1.0,]
+				// tem.rotation=[math.pi/4,0,math.pi/4]
+				cubes.push(tem)
+			}
+		}
+	}
+	// console.log(meshs)
 	return (
-		<div >
-			<Canvas  frameloop="always" camera={{ position: [0, 0, 12] }}>
-				{meshs.map((info,key)=>{
-					return <Cube  key={key} info={info} />
-				})}
-				{/* <Cube/> */}
-			</Canvas>
+		<div style={{width:"500px",height:"500px"}}>
+		<Canvas  frameloop="always" camera={ {lookAt:()=>{return [0,0,0]} ,position: [1, 5, 0]}}>
+			{cubes.map((info,key)=>{
+				return <Cube  key={key} info={info} />
+			})}
+		</Canvas>
 
 		</div>
 	)
@@ -171,22 +167,6 @@ function ThreeBlock(props) {
 	// 	</div>
 	// )
 }
-// function onWindowResize() {
-// 	let temp_w=window.innerWidth
-// 	try {
-// 		let temp=document.querySelector("#root").offsetWidth
-// 	  	console.log(window.innerWidth,temp)
-// 		if (temp!=="" && temp!==undefined) {
-// 			temp_w=temp
-// 		}
-// 	} catch (error) {
-		
-// 	}
-//   renderer.setSize(temp_w, block_height);
-
-//   camera.aspect = temp_w / block_height;
-//   camera.updateProjectionMatrix();
-// }
 
 // init("three_canva")
 export default ThreeBlock 
