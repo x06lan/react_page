@@ -1,4 +1,5 @@
-import "./Icon_block.css"
+
+// import "./Icon_block.css"
 export type IconBlockInfo={
     href?: string;
     src: string;
@@ -8,19 +9,28 @@ type propsType ={
     info: IconBlockInfo[];
 }
 function IconBlock(props:IconBlockInfo){
-    if (props.href===undefined){
+    let blockStyle=["bg-transparent","mx-1","backdrop-blur-lg"]
+    let imageStyle=["w-20","h-20","rounded-lg","bg-white"]
+    let textStyle=["text-white","text-center"]
+    function ImgText({src,text}:{src:string,text:string}):JSX.Element{
+        return(
+            <>
+                <img src={src} alt="nice" className={imageStyle.join(" ")}/>
+                <h3 className={textStyle.join(" ")}>{text}</h3>
+            </>
+        ) 
+    }
+    if (props.href===undefined||props.href.length===0){
         return (
-        <div className="block_div">
-            <img src={props.src} alt="nice" className="icon_image"/>
-            <h3 className="icon_title">{props.name}</h3>
-        </div>
+            <div className={blockStyle.join(" ")}>
+                <ImgText src={props.src} text={props.name} ></ImgText>
+            </div>
         )
     }
     else{
         return(
-            <a href={props.href}className="block_div" target="_blank"  rel="noopener noreferrer">
-                <img src={props.src} alt="nice" className="icon_image"/>
-                <h3 className="icon_title">{props.name}</h3>
+            <a href={props.href}className={blockStyle.join(" ")} target="_blank"  rel="noopener noreferrer">
+                <ImgText src={props.src} text={props.name} ></ImgText>
             </a>
         )
     }
@@ -28,10 +38,12 @@ function IconBlock(props:IconBlockInfo){
 function IconBlockList (props:propsType){
     console.log(props)
     return(
-        <div className="block_list container">
-            {props.info.map(function(value,index){
-                return <IconBlock key={index} {...value}/>
-            })}
+        <div className="bg-gradient-to-r from-purple-400 md:from-yellow-500">
+            <div className={"flex flex-wrap flex-row "}>
+                {props.info.map(function(value,index){
+                    return <IconBlock key={index} {...value}/>
+                })}
+            </div>
         </div>
     )
 }
