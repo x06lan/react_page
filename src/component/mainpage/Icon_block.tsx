@@ -9,8 +9,9 @@ type propsType ={
     info: IconBlockInfo[];
 }
 function IconBlock(props:IconBlockInfo){
-    let blockStyle=["bg-transparent","mx-1","backdrop-blur-lg"]
-    let imageStyle=["w-20","h-20","rounded-lg","bg-white"]
+    // let blockStyle=["mx-1","backdrop-blur-lg"]
+    let blockStyle=["bg-transparent","mx-1"]
+    let imageStyle=["w-24","h-24","rounded-lg","bg-white"]
     let textStyle=["text-white","text-center"]
     function ImgText({src,text}:{src:string,text:string}):JSX.Element{
         return(
@@ -38,13 +39,13 @@ function IconBlock(props:IconBlockInfo){
 function IconBlockList (props:propsType){
     console.log(props)
     return(
-        <div className="bg-gradient-to-r from-purple-400 md:from-yellow-500">
-            <div className={"flex flex-wrap flex-row "}>
+        // <div className="bg-gradient-to-r from-purple-400 md:from-yellow-500">
+            <div className={"flex flex-wrap flex-row backdrop-blur-sm rounded-sm"}>
                 {props.info.map(function(value,index){
                     return <IconBlock key={index} {...value}/>
                 })}
             </div>
-        </div>
+        // </div>
     )
 }
 
