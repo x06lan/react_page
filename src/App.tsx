@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './assets/x06_icon.png';
-import backgroundImage from './assets/.png';
+// import backgroundImage from './assets/.png';
+// import backgroundImage from './assets/banner.webp';
+import backgroundImage from './assets/banner.gif';
 import './App.css';
 import IconBlockList, { IconBlockInfo } from './component/mainpage/Icon_block';
 
@@ -23,14 +25,15 @@ function App()
     { src: "./img/tech/c++.png", name: "c++", href: "" },
     { src: "./img/tech/blender.png", name: "blender", href: "" },
   ];
+  const darkTheme=window.matchMedia("(prefers-color-scheme: dark)");
   
   return (
     // <div className="bg-gradient-to-r from-blue to-pink">
-    <div className="" style={{ backgroundImage: "url("+logo+")"}} >
+    <div className="" style={{ backgroundImage: "url("+backgroundImage+")"}} >
     {/* <div className="bg-black"> */}
         <IconBlockList info={tools}></IconBlockList>
-        <IconBlockList info={tools}></IconBlockList>
-        <IconBlockList info={tools}></IconBlockList>
+        {/* <IconBlockList info={tools}></IconBlockList>
+        <IconBlockList info={tools}></IconBlockList> */}
     </div>
   );
 }
