@@ -18,7 +18,7 @@ function ImageBlock(props:BlockInfo){
         else{
             return(
                 <>
-                    <img src={src} alt="loading?" className={"block-image icon-size"}/>
+                    <img src={src} alt="loading?" className={"block-image image-size"}/>
                     <h3 className={"block-text"}>{text}</h3>
                 </>
             ) 
@@ -43,11 +43,17 @@ function ImageBlock(props:BlockInfo){
 function ImageBlockList (props:propsType){
     console.log(props)
     return(
-        <div className={"block-container"} >
-            {props.info.map(function(value,index){
-                console.log(value.sketchfab_id,index)
-                return <ImageBlock key={index} {...value}/>
-            })}
+        // <div className="top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-green-700 opacity-50">
+
+        // </div>
+        <div className="mask-gradient container">
+            <div className={"image-container "} >
+                {props.info.map(function(value,index){
+                    console.log(value.sketchfab_id,index)
+                    return <ImageBlock key={index} {...value}/>
+                })}
+            </div>
+
         </div>
     )
 }

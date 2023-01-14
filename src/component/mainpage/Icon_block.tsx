@@ -38,7 +38,7 @@ function IconBlock(props:BlockInfo){
 function IconBlockList (props:propsType){
     console.log(props)
     return(
-        <div className={"block-container"} >
+        <div className={"icon-container"} >
             {props.info.map(function(value,index){
                 return <IconBlock key={index} {...value}/>
             })}

@@ -1,25 +1,70 @@
 @tailwind base;
 @tailwind components;
-.block-container {
-
-    @apply 
+.icon-container{
+    @apply
     flex
     flex-wrap
     flex-row
+    block-container
+    backdrop-blur-lg
+    w-4/5
+}
+.mask-gradient{
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 50%,transparent 100%);
+     mask-image: linear-gradient(to bottom, transparent 5%, black 20%, black 80%,transparent 95%);
+}
+.image-container{
+    @apply
+    w-4/5
+    container
+    /* block-container */
+    flex-col
+    /* sm:flex-col */
+    ;
+    
+    scroll-behavior: auto;
+    scroll-snap-align: center;
+    scroll-snap-type: y mandatory;
+    scroll-margin-inline-start: 50%;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
+    /* overflow-x: scroll ; */
+    overflow-y: scroll ;
+    -webkit-overflow-scrolling: touch;
+    aspect-ratio: 2/1;
+    /* aspect-ratio: 2/6; */
+}
+.container{
+
+    @apply
+    flex
+    mx-auto
+    px-1
+    py-5;
+    align-items:center;
+    
+}
+.block-container {
+
+    @apply 
+    /* flex
+    flex-wrap
+    flex-row */
     rounded-lg
     px-1
     py-5
     mx-auto
     border
     border-solid
-    w-4/5
 /* custom style */
     border-color
 }
 .main-block{
     @apply 
     bg-transparent 
-    mx-auto 
+    mx-5
+    my-5
+    /* mx-auto  */
     my-auto
 }
 .icon-size{
@@ -32,13 +77,11 @@
     md:h-40
     lg:w-48
     lg:h-48
-    /* sm:hover:h-16
-    sm:hover:w-16
-    md:hover:h-24
-    md:hover:w-24
-    lg:hover:h-36
-    lg:hover:w-36
-    duration-500 */
+}
+.image-size{
+    @apply
+    w-3/4
+    max-w-[500px]
 }
 .icon-width{
     @apply
@@ -47,19 +90,6 @@
     md:w-24
     lg:w-48
 }
-/* .image-size{
-    @apply
-    xl:w-96
-    xl:h-96
-    xs:w-12
-    xs:h-12
-    sm:w-20
-    sm:h-20
-    md:w-24
-    md:h-24
-    lg:w-48
-    lg:h-48
-} */
 .icon-animation{
     @apply
     sm:hover:w-20
@@ -71,12 +101,13 @@
     xl:hover:w-64
     xl:hover:h-64
     duration-500
+    delay-100
     
 }
 .block-image{
     @apply 
     mx-auto
-    rounded-lg
+    rounded-xl
     bg-white
 }
 .block-text{
@@ -90,8 +121,6 @@
     mx-auto
     sm:my-auto
     md:my-auto
-    /* md:h-8 */
-    /* h-6 */
 
     /* custom */
     icon-width
@@ -100,8 +129,8 @@
 .border-color{
     @apply 
     border-[#44009d]
-    bg-black/30
+    bg-[rgba(12,15,50,0.68)]
     border-opacity-20
-    backdrop-blur-lg
+    /* backdrop-blur-lg */
 
 }

@@ -55,13 +55,15 @@ let site:Array<BlockInfo>= [
   
   return (
     // <div className="bg-gradient-to-r from-blue to-pink">
-    <div className="" style={{ backgroundImage: "url("+backgroundImage+")"}} >
+    <div className=" "style={{ backgroundImage: "url("+backgroundImage+")"}} >
+      <div className="backdrop-blur-lg">
     {/* <div className="bg-black"> */}
         <IconBlockList info={tools}></IconBlockList>
         <ImageBlockList info={site}></ImageBlockList>
         {/* <SketchfabBlock {...site[5]}></SketchfabBlock> */}
-        {/* <IconBlockList info={tools}></IconBlockList>
-        <IconBlockList info={tools}></IconBlockList> */}
+        {/* {/* <IconBlockList info={tools}></IconBlockList> */}
+        <IconBlockList info={tools}></IconBlockList> 
+        </div>
     </div>
   );
 }

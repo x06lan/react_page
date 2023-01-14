@@ -17,7 +17,7 @@ function SketchfabBlock(props:{name:string,sketchfab_id: string}) {
             web-share="true"
             src={src}
             // style={{borderRadius:"5% 5% 5% 5%"}}
-            className="block-image rounded-lg"
+            className="block-image rounded-lg aspect-square"
             >
         </iframe>
         </div>
