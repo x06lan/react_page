@@ -16,7 +16,7 @@
 /* custom style */
     border-color
 }
-.block{
+.main-block{
     @apply 
     bg-transparent 
     mx-auto 
@@ -26,12 +26,12 @@
     @apply
     xs:w-12
     xs:h-12
-    sm:w-12
-    sm:h-12
-    md:w-24
-    md:h-24
-    lg:w-24
-    lg:h-24
+    sm:w-20
+    sm:h-20
+    md:w-40
+    md:h-40
+    lg:w-48
+    lg:h-48
     /* sm:hover:h-16
     sm:hover:w-16
     md:hover:h-24
@@ -40,12 +40,36 @@
     lg:hover:w-36
     duration-500 */
 }
+.icon-width{
+    @apply
+    xs:w-12
+    sm:w-20
+    md:w-24
+    lg:w-48
+}
+/* .image-size{
+    @apply
+    xl:w-96
+    xl:h-96
+    xs:w-12
+    xs:h-12
+    sm:w-20
+    sm:h-20
+    md:w-24
+    md:h-24
+    lg:w-48
+    lg:h-48
+} */
 .icon-animation{
     @apply
-    md:hover:h-36
-    md:hover:w-36
-    lg:hover:h-36
-    lg:hover:w-36
+    sm:hover:w-20
+    sm:hover:h-20
+    md:hover:h-48
+    md:hover:w-48
+    lg:hover:h-64
+    lg:hover:w-64
+    xl:hover:w-64
+    xl:hover:h-64
     duration-500
     
 }
@@ -64,8 +88,13 @@
     xl:text-xl
     text-center
     mx-auto
+    sm:my-auto
+    md:my-auto
+    /* md:h-8 */
+    /* h-6 */
 
     /* custom */
+    icon-width
     /* icon-animation */
 }
 .border-color{

@@ -5,8 +5,8 @@ module.exports = {
     extend: {
         screens: {
           xs: '100px',
-          sm: '480px',
-          md: '768px',
+          sm: '300px',
+          md: '450px',
           lg: '976px',
           xl: '1440px',
         },

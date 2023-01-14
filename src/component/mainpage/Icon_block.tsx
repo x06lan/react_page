@@ -22,14 +22,14 @@ function IconBlock(props:BlockInfo){
     }
     if (props.href===undefined||props.href.length===0){
         return (
-            <div className={"block"}>
+            <div className={"main-block"}>
                 <ImgText src={props.src} text={props.name} ></ImgText>
             </div>
         )
     }
     else{
         return(
-            <a href={props.href}className={"block"} target="_blank"  rel="noopener noreferrer">
+            <a href={props.href}className={"main-block"} target="_blank"  rel="noopener noreferrer">
                 <ImgText src={props.src} text={props.name} ></ImgText>
             </a>
         )
