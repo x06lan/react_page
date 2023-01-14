@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+.block-container {
+
+    @apply 
+    flex
+    flex-wrap
+    flex-row
+    rounded-lg
+    px-1
+    py-5
+    mx-auto
+    border
+    border-solid
+    w-4/5
+/* custom style */
+    border-color
+}
+.block{
+    @apply 
+    bg-transparent 
+    mx-auto 
+    my-auto
+}
+.icon-size{
+    @apply
+    xs:w-12
+    xs:h-12
+    sm:w-12
+    sm:h-12
+    md:w-24
+    md:h-24
+    lg:w-24
+    lg:h-24
+    /* sm:hover:h-16
+    sm:hover:w-16
+    md:hover:h-24
+    md:hover:w-24
+    lg:hover:h-36
+    lg:hover:w-36
+    duration-500 */
+}
+.icon-animation{
+    @apply
+    md:hover:h-36
+    md:hover:w-36
+    lg:hover:h-36
+    lg:hover:w-36
+    duration-500
+    
+}
+.block-image{
+    @apply 
+    mx-auto
+    rounded-lg
+    bg-white
+}
+.block-text{
+    @apply 
+    text-white
+    sm:text-sm
+    md:text-base
+    lg:text-lg
+    xl:text-xl
+    text-center
+    mx-auto
+
+    /* custom */
+    /* icon-animation */
+}
+.border-color{
+    @apply 
+    border-[#44009d]
+    bg-black/30
+    border-opacity-20
+    backdrop-blur-lg
+
+}

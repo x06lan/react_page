@@ -1,19 +1,21 @@
 
-import "./Icon_block.css"
-export type IconBlockInfo={
-    href?: string;
+import "./block.css"
+export type BlockInfo={
     src: string;
     name: string;
+    href?: string;
+    sketchfab_id?: string;
+    time?:number;
 }
 type propsType ={
-    info: IconBlockInfo[];
+    info: BlockInfo[];
 }
-function IconBlock(props:IconBlockInfo){
+function IconBlock(props:BlockInfo){
     // let blockStyle=["mx-1","backdrop-blur-lg"]
     function ImgText({src,text}:{src:string,text:string}):JSX.Element{
         return(
             <>
-                <img src={src} alt="nice" className={"block-image"}/>
+                <img src={src} alt="nice" className={"block-image icon-size icon-animation"}/>
                 <h3 className={"block-text"}>{text}</h3>
             </>
         ) 
@@ -36,7 +38,7 @@ function IconBlock(props:IconBlockInfo){
 function IconBlockList (props:propsType){
     console.log(props)
     return(
-        <div className={"block-container"} style={{maxWidth:"80%",minWidth:"60"}}>
+        <div className={"block-container"} >
             {props.info.map(function(value,index){
                 return <IconBlock key={index} {...value}/>
             })}
