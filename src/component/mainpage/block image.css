@@ -16,6 +16,16 @@
     /* max-w-[200px] */
     aspect-square
 }
+.image-container{
+    @apply
+    flex
+    flex-wrap
+    flex-row
+    /* block-container */
+    backdrop-blur-lg
+    w-4/5
+
+}
 .scroll-container{
     @apply
     relative 

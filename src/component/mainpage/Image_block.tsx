@@ -28,14 +28,14 @@ const ImageBlock=React.forwardRef((props:BlockInfo,ref:any)=>{
     }
     if (props.href===undefined||props.href.length===0){
         return (
-            <div className={"scroll-block"} ref={ref}>
+            <div className={"main-block"} ref={ref}>
                 <ImgText src={props.src} text={props.name} sketchfab_id={props.sketchfab_id} ></ImgText>
             </div>
         )
     }
     else{
         return(
-            <a href={props.href}className={"scroll-block"} ref={ref} target="_blank"  rel="noopener noreferrer">
+            <a href={props.href}className={"main-block"} ref={ref} target="_blank"  rel="noopener noreferrer">
                 <ImgText src={props.src} text={props.name} sketchfab_id={props.sketchfab_id} ></ImgText>
             </a>
         )
@@ -66,8 +66,8 @@ function ImageBlockList (props:propsType){
     
     
     return(
-        <div className="mask-gradient flex flex-row w-4/5 mx-auto">
-            <div className={"scroll-container "} onScroll={sc} ref={ref}>
+        // <div className="mask-gradient flex flex-row w-4/5 mx-auto">
+            <div className={"icon-container mb-5"} onScroll={sc} ref={ref}>
                 {/* <ImageBlock  ref={childRefs[props.info.length]} {...space}/> */}
                 {props.info.map(function(value,index){
                     // console.log(value.sketchfab_id,index)
@@ -76,21 +76,7 @@ function ImageBlockList (props:propsType){
                 {/* <ImageBlock  ref={childRefs[props.info.length]} {...space}/> */}
 
             </div>
-            <div className={"scroll-container "} onScroll={sc} ref={ref}>
-                {props.info.map(function(value,index){
-                    // console.log(value.sketchfab_id,index)
-                    return <ImageBlock  key={index} ref={childRefs[index]} {...value}/>
-                })}
-
-            </div>
-            <div className={"scroll-container "} onScroll={sc} ref={ref}>
-                {props.info.map(function(value,index){
-                    // console.log(value.sketchfab_id,index)
-                    return <ImageBlock  key={index} ref={childRefs[index]} {...value}/>
-                })}
-
-            </div>
-        </div>
+        // </div>
     )
 }
 

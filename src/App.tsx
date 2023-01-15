@@ -6,6 +6,7 @@ import backgroundImage from './assets/banner.gif';
 import './App.css';
 import IconBlockList, {  BlockInfo } from './component/mainpage/Icon_block';
 import ImageBlockList from './component/mainpage/Image_block';
+import ThreeBlock from './component/mainpage/Three_block';
 
 
 function App() 
@@ -55,15 +56,18 @@ let site:Array<BlockInfo>= [
   
   return (
     // <div className="bg-gradient-to-r from-blue to-pink">
-    <div className=" "style={{ backgroundImage: "url("+backgroundImage+")"}} >
-      <div className="backdrop-blur-lg">
+    <div className="w-fullscreen h-fullscreen p-0 m-0  "style={{ backgroundImage: "url("+backgroundImage+")"}} >
+        <div className="backdrop-blur w-full" >
     {/* <div className="bg-black"> */}
-        <IconBlockList info={tools}></IconBlockList>
-        <ImageBlockList info={site}></ImageBlockList>
+        {/* <ThreeBlock></ThreeBlock> */}
+        {/* <IconBlockList info={tools}></IconBlockList>
+        <ImageBlockList info={site}></ImageBlockList> */}
         {/* <SketchfabBlock {...site[5]}></SketchfabBlock> */}
         {/* {/* <IconBlockList info={tools}></IconBlockList> */}
-        <IconBlockList info={tools}></IconBlockList> 
+        {/* <IconBlockList info={tools}></IconBlockList>  */}
         </div>
+        <div className="ball"></div>
+        {/* <span className='ball bg-blue w-10 h-10 m-auto block opacity-100'></span> */}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import {Canvas, useFrame } from 'react-three-fiber';
 import {create,all}from 'mathjs'
 import { Perlin } from 'three-noise';
-import React, { useEffect, useRef}  from 'react';
+import React, { useEffect, useRef,useState}  from 'react';
 
 	
 // function animation( time ) {
@@ -54,6 +54,29 @@ function Cube(props){
       </mesh>
 	)
 }
+function Box(props) {
+	// This reference will give us direct access to the mesh
+	const mesh = useRef()
+	// Set up state for the hovered and active state
+	const [hovered, setHover] = useState(false)
+	const [active, setActive] = useState(false)
+	// Subscribe this component to the render-loop, rotate the mesh every frame
+	useFrame((state, delta) => (mesh.current.rotation.x += delta))
+	// Return view, these are regular three.js elements expressed in JSX
+	return (
+	  <mesh
+		{...props}
+		ref={mesh}
+		scale={active ? 1.5 : 1}
+		onClick={(event) => setActive(!active)}
+		onPointerOver={(event) => setHover(true)}
+		onPointerOut={(event) => setHover(false)}>
+		<boxGeometry args={[1, 1, 1]} />
+		<meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+	  </mesh>
+	)
+  }
+
 function ThreeBlock(props) {
 	// const canvasRef=useRef();
 	const math = create(all)
@@ -92,9 +115,13 @@ function ThreeBlock(props) {
 	return (
 		<div style={{width:"500px",height:"500px"}}>
 		<Canvas  frameloop="always" camera={ {lookAt:()=>{return [0,0,0]} ,position: [1, 5, 0]}}>
-			{cubes.map((info,key)=>{
+			{/* {cubes.map((info,key)=>{
 				return <Cube  key={key} info={info} />
-			})}
+			})} */}
+			<ambientLight />
+			<pointLight position={[10, 10, 10]} />
+			<Box position={[-1.2, 0, 0]} />
+			<Box position={[1.2, 0, 0]} />
 		</Canvas>
 
 		</div>

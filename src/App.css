@@ -39,3 +39,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.h-fullscreen{
+
+  /* height: 100vh; */
+  height: 100%;
+}
+.w-fullscreen{
+  width: 100%;
+  /* width: 100vw; */
+}
+.ball{
+  /* animation: spin 2s linear infinite; */
+  /* @apply */
+  /* rounded-full */
+  display: block;
+	width: 150px;
+	height: 150px;
+	/* margin: 50px auto 0; */
+	border-radius: 50%;
+  background-color: rgb(49, 145, 231);
+  transform: ;
+}
+body{
+  width: 100%;
+  height: 100%;
+}
