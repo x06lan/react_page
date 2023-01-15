@@ -15,7 +15,7 @@ function IconBlock(props:BlockInfo){
     function ImgText({src,text}:{src:string,text:string}):JSX.Element{
         return(
             <>
-                <img src={src} alt="nice" className={"block-image icon-size icon-animation"}/>
+                <img src={src} alt="loading?" className={"block-image icon-size icon-animation bg-white"}/>
                 <h3 className={"block-text"}>{text}</h3>
             </>
         ) 

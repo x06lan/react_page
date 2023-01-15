@@ -1,12 +1,13 @@
 import SketchfabBlock from "./Sketchfab_block"
 import {BlockInfo} from "./Icon_block"
-import "./block.css"
+import "./block image.css"
+import React ,{ useEffect, useRef} from "react"
 type propsType ={
     info: BlockInfo[];
 }
-function ImageBlock(props:BlockInfo){
+const ImageBlock=React.forwardRef((props:BlockInfo,ref:any)=>{
+    // let ref=useRef(null);
     function ImgText({src,text,sketchfab_id}:{src:string,text:string,sketchfab_id?:string}):JSX.Element{
-        console.log(sketchfab_id)
         if(sketchfab_id!==undefined && sketchfab_id){
             return(
                 <>
@@ -27,33 +28,68 @@ function ImageBlock(props:BlockInfo){
     }
     if (props.href===undefined||props.href.length===0){
         return (
-            <div className={"main-block"}>
+            <div className={"scroll-block"} ref={ref}>
                 <ImgText src={props.src} text={props.name} sketchfab_id={props.sketchfab_id} ></ImgText>
             </div>
         )
     }
     else{
         return(
-            <a href={props.href}className={"main-block"} target="_blank"  rel="noopener noreferrer">
+            <a href={props.href}className={"scroll-block"} ref={ref} target="_blank"  rel="noopener noreferrer">
                 <ImgText src={props.src} text={props.name} sketchfab_id={props.sketchfab_id} ></ImgText>
             </a>
         )
     }
-}
+})
 function ImageBlockList (props:propsType){
-    console.log(props)
+    let lastscrollTop:number=0;
+    const ref=useRef(null);
+    function sc(e:any){
+        console.log()
+        let dx=Math.abs(lastscrollTop-e.target.scrollTop);
+        lastscrollTop =e.target.scrollTop;
+        let tem=(e.target.scrollTop+e.target.clientHeight/2)/e.target.scrollHeight*16
+        tem=Math.floor(tem)
+    }
+    
+    let space:BlockInfo={
+        src:"",
+        href:"",
+        name:""
+    }
+    let infos:BlockInfo[] = [space,...props.info,space]
+    let childRefs:React.RefObject<any>[]=[];
+    for(let i = 0; i <infos.length; i++){
+        childRefs.push(React.createRef())
+    }
+    console.log(childRefs)
+    
+    
     return(
-        // <div className="top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-green-700 opacity-50">
-
-        // </div>
-        <div className="mask-gradient container">
-            <div className={"image-container "} >
+        <div className="mask-gradient flex flex-row w-4/5 mx-auto">
+            <div className={"scroll-container "} onScroll={sc} ref={ref}>
+                {/* <ImageBlock  ref={childRefs[props.info.length]} {...space}/> */}
                 {props.info.map(function(value,index){
-                    console.log(value.sketchfab_id,index)
-                    return <ImageBlock key={index} {...value}/>
+                    // console.log(value.sketchfab_id,index)
+                    return <ImageBlock  key={index} ref={childRefs[index]} {...value}/>
                 })}
-            </div>
+                {/* <ImageBlock  ref={childRefs[props.info.length]} {...space}/> */}
 
+            </div>
+            <div className={"scroll-container "} onScroll={sc} ref={ref}>
+                {props.info.map(function(value,index){
+                    // console.log(value.sketchfab_id,index)
+                    return <ImageBlock  key={index} ref={childRefs[index]} {...value}/>
+                })}
+
+            </div>
+            <div className={"scroll-container "} onScroll={sc} ref={ref}>
+                {props.info.map(function(value,index){
+                    // console.log(value.sketchfab_id,index)
+                    return <ImageBlock  key={index} ref={childRefs[index]} {...value}/>
+                })}
+
+            </div>
         </div>
     )
 }
