@@ -12,6 +12,7 @@ module.exports = {
         },
         colors: {
           'blue': '#1fb6ff',
+          'red': '#ff0000',
           'purple': '#7e5bef',
           'pink': '#ff49db',
           'orange': '#ff7849',
@@ -20,6 +21,11 @@ module.exports = {
           'gray-dark': '#273444',
           'gray': '#8492a6',
           'gray-light': '#d3dce6',
+        },
+        animationDuration: {
+          '300': '300ms',
+          '500': '500ms',
+          '1000': '1000ms',
         },
     },
   },

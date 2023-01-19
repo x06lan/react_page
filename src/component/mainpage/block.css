@@ -26,7 +26,7 @@
     @apply 
     bg-transparent 
     /* mx-5 */
-    my-5
+    my-10
     mx-auto 
     hover:scale-125
     duration-500
@@ -51,7 +51,7 @@
 .icon-animation{
     @apply
     /* hover:w-1/3 */
-    /* hover:scale-125 */
+    hover:scale-125
     /* sm:hover:scale-125 */
     /* md:hover:scale-125 */
     /* sm:hover:w-20*/
@@ -89,7 +89,9 @@
     border-[#44009d]
     bg-[rgba(12,15,50,0.68)]
     border-opacity-20
-    shadow-2xl
+    /* shadow-2xl */
+    /* shadow-[10px 10px 10px 10px] */
     shadow-[rgba(56,28,213,0.36)]
+    /* shadow */
     /* backdrop-blur-lg */
 }

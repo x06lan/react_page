@@ -1,14 +1,26 @@
 import React from 'react';
+// import ThreeBlock from './component/mainpage/Three_block';
+import ImageBlockList from './component/mainpage/Image_block';
+import IconBlockList, {  BlockInfo } from './component/mainpage/Icon_block';
+
 import logo from './assets/x06_icon.png';
 // import backgroundImage from './assets/.png';
 // import backgroundImage from './assets/banner.webp';
 import backgroundImage from './assets/banner.gif';
 import './App.css';
-import IconBlockList, {  BlockInfo } from './component/mainpage/Icon_block';
-import ImageBlockList from './component/mainpage/Image_block';
-import ThreeBlock from './component/mainpage/Three_block';
 
 
+
+function Ball(props:{className:string,delay:number}){
+  let style={animationDelay:props.delay.toString()+"s"};
+  return (
+    <div className="moveing_x" style={style}>
+      <div className=" moveing_y" style={style}>
+        <div className={"ball "+props.className} ></div>
+      </div>
+    </div>
+  )
+} 
 function App() 
 {
   const tools:Array<BlockInfo>=[
@@ -56,18 +68,30 @@ let site:Array<BlockInfo>= [
   
   return (
     // <div className="bg-gradient-to-r from-blue to-pink">
-    <div className="w-fullscreen h-fullscreen p-0 m-0  "style={{ backgroundImage: "url("+backgroundImage+")"}} >
+    // <div className="w-fullscreen h-fullscreen p-0 m-0 "style={{ backgroundImage: "url("+backgroundImage+")" }} >
+    <div className="bg-[#09110c]">
+        <style>
+        </style>
+        {/* <div className="ball_y w-48 bg-[#2b00ff]"></div>*/}
+        {/* <div className="ball_y w-24 bg-blue"></div>  */}
+        <Ball className='w-32 bg-[#e893fb]' delay={-6}></Ball>
+        <Ball className='w-48 bg-[#00fff2]' delay={-5}></Ball>
+        <Ball className='w-52 bg-[#a2ff00]' delay={-4}></Ball>
+        <Ball className='w-64 bg-[#00ff91]' delay={-3}></Ball>
+        <Ball className='w-64 bg-[#0011ff]' delay={-2}></Ball>
+        <Ball className='w-64 bg-[#ddff00]' delay={-1}></Ball>
+        {/* <Ball className='w-24 bg-[#398c16]'></Ball>
+        <Ball className='w-20 bg-[#16268c]'></Ball> */}
+        {/* <div className="moveing_x"><div className="ball w-20 bg-[#4518f9] animation-duration-300"></div></div> */}
         <div className="backdrop-blur w-full" >
-    {/* <div className="bg-black"> */}
+        {/* <div className="bg-black"> */} 
         {/* <ThreeBlock></ThreeBlock> */}
         {/* <IconBlockList info={tools}></IconBlockList>
-        <ImageBlockList info={site}></ImageBlockList> */}
         {/* <SketchfabBlock {...site[5]}></SketchfabBlock> */}
         {/* {/* <IconBlockList info={tools}></IconBlockList> */}
-        {/* <IconBlockList info={tools}></IconBlockList>  */}
+        <IconBlockList info={tools}></IconBlockList> 
+        <ImageBlockList info={site}></ImageBlockList> 
         </div>
-        <div className="ball"></div>
-        {/* <span className='ball bg-blue w-10 h-10 m-auto block opacity-100'></span> */}
     </div>
   );
 }
