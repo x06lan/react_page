@@ -1,8 +1,12 @@
 import * as THREE from 'three';
-import {Canvas, useFrame } from 'react-three-fiber';
+// import {Canvas, useFrame } from 'react-three-fiber';
+import {Canvas, useFrame ,useThree} from '@react-three/fiber';
+
 import {create,all, rotate}from 'mathjs'
 // import { Perlin } from 'three-noise';
-import React, { useEffect, useRef,useState}  from 'react';
+import React, { useEffect, useRef,useState,useMemo}  from 'react';
+import CameraControls from 'camera-controls'
+
 
 	
 // function animation( time ) {
@@ -60,9 +64,26 @@ import React, { useEffect, useRef,useState}  from 'react';
 //       </mesh>
 // 	)
 // }
-function Box(props:{position:THREE.Vector3,scale:THREE.Vector3,rotation:any}) {
+// function Box() {
+// 	const boxRef = useRef<THREE.Mesh>(null!)
+   
+// 	useFrame(() => {
+// 	boxRef.current.rotation.x += 0.005
+// 	boxRef.current.rotation.y += 0.01
+// 	 })
+   
+// 	return (
+// 	<mesh ref={boxRef}>
+// 	<boxGeometry args={[1, 1, 1]} />
+// 	<meshStandardMaterial color="red" />
+// 	</mesh>
+// 	 )
+//    }
+
+function Box(props:any) {
 	// This reference will give us direct access to the mesh
-	const mesh = useRef(null)
+	// const mesh = useRef(null)
+	const mesh= useRef<THREE.Mesh>(null!)
 	// Set up state for the hovered and active state
 	const [hovered, setHover] = useState(false)
 	const [active, setActive] = useState(false)
@@ -89,55 +110,85 @@ function Box(props:{position:THREE.Vector3,scale:THREE.Vector3,rotation:any}) {
 	)
   }
 
-// function ThreeBlock(props) {
-// 	// const canvasRef=useRef();
-// 	const math = create(all)
-// 	let noise = new Perlin(math.random());
-// 	let block_height=600
-// 	let mouse={x:0,y:0}
-// 	let size=10
-// 	let gap=0.2
-// 	function onDocumentMouseMove( event ) {
-// 		const windowHalfX = window.innerWidth / 2;
-// 		const windowHalfY = window.innerHeight / 2;
-// 		mouse.x = ( event.clientX - windowHalfX ) /windowHalfX/2;
-// 		mouse.y = ( event.clientY - windowHalfY ) / windowHalfY/2;
-// 	}
+function Controlser(){
+	const camera = useThree((state) => state.camera)
+	const gl = useThree((state) => state.gl)
+	// const controls = useMemo(() => new CameraControls(camera, gl.domElement), [])
+	const camPosition =new THREE.Vector3(1,5,0);
+	const targePosition =new THREE.Vector3(0,0,0);
+	camera.lookAt(targePosition);
+	// (targePosition-camPosition)
+	return useFrame((state,delta) => {
+		// camera.rotation=
+		// controls.setLookAt(camPosition.x, camPosition.y,camPosition.z,targePosition.x,targePosition.y,targePosition.z)
+		// camera.position
+		
+	})
+	// return useFrame
+
+}
+function ThreeBlock(props:any) {
+	// const canvasRef=useRef();
+	const math = create(all)
+	// let noise = new Perlin(math.random());
+	let block_height=600
+	let mouse={x:0,y:0}
+	let size=10
+	let gap=0.2
+	window.addEventListener('mousemove', (event) => {
+		const windowHalfX = window.innerWidth / 2;
+		const windowHalfY = window.innerHeight / 2;
+		mouse.x = ( event.clientX - windowHalfX ) /windowHalfX/2;
+		mouse.y = ( event.clientY - windowHalfY ) / windowHalfY/2;
+	})
+
+
+
+	// function onDocumentMouseMove( event ) {
+	// }
 	
-// 	document.addEventListener( 'mousemove', onDocumentMouseMove );
-// 	document.addEventListener( 'mouseover', onDocumentMouseMove );
+	// document.addEventListener( 'mousemove', onDocumentMouseMove );
+	// document.addEventListener( 'mouseover', onDocumentMouseMove );
 
-// 	let cubes=[]
-// 	for (let index_x= 1; index_x <= size; index_x++) {
-// 		for(let index_y=1; index_y<=size;index_y++){
-// 			for(let index_z=1; index_z<=size;index_z++){
-// 				let tem={};
-// 				// tem.position=[math.random(i)-0.5,math.random(i)-0.5,math.random(i)-0.5]
-// 				// tem.scale=[math.random(i),math.random(i),math.random(i)]
-// 				tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
-// 				// tem.position=[1,1,10]
-// 				tem.scale=[0.2,0.2,0.2]
-// 				// tem.scale=[1.0,1.0,1.0,]
-// 				// tem.rotation=[math.pi/4,0,math.pi/4]
-// 				cubes.push(tem)
-// 			}
-// 		}
-// 	}
-// 	// console.log(meshs)
-// 	return (
-// 		<div style={{width:"500px",height:"500px"}}>
-// 		<Canvas  frameloop="always" camera={ {lookAt:()=>{return [0,0,0]} ,position: [1, 5, 0]}}>
-// 			{/* {cubes.map((info,key)=>{
-// 				return <Cube  key={key} info={info} />
-// 			})} */}
-// 			<ambientLight />
-// 			<pointLight position={[10, 10, 10]} />
-// 			{/* <Box position={[-1.2, 0, 0]} /> */}
-// 			{/* <Box position={[1.2, 0, 0]} /> */}
-// 		</Canvas>
+	// let cubes=[]
+	// for (let index_x= 1; index_x <= size; index_x++) {
+	// 	for(let index_y=1; index_y<=size;index_y++){
+	// 		for(let index_z=1; index_z<=size;index_z++){
+	// 			let tem:any;
+	// 			// tem.position=[math.random(i)-0.5,math.random(i)-0.5,math.random(i)-0.5]
+	// 			// tem.scale=[math.random(i),math.random(i),math.random(i)]
+	// 			tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
+	// 			// tem.position=[1,1,10]
+	// 			tem.scale=[0.2,0.2,0.2]
+	// 			// tem.scale=[1.0,1.0,1.0,]
+	// 			// tem.rotation=[math.pi/4,0,math.pi/4]
+	// 			cubes.push(tem)
+	// 		}
+	// 	}
+	// }
+	// console.log(meshs)
+	// return (
+	// 	<Canvas>
+	// 	<ambientLight />
+	// 	<Box />
+	// 	</Canvas>
+	// 	 )
+	return (
+		<div className={"mx-auto"} style={{width:"500px",height:"500px"}}>
+		<Canvas  frameloop="always" >
+			{/* {cubes.map((info,key)=>{
+				return <Cube  key={key} info={info} />
+			})} */}
+			<ambientLight />
+			<pointLight position={[10, 10, 10]} />
+			<Box position={[0, 0, 0]} />
+			{/* <Box position={[1.2, 0, 0]} /> */}
+			<Controlser></Controlser>
+		</Canvas>
 
-// 		</div>
-// 	)
+		</div>
+	)
+}
 // 	// useEffect(() => { camera = new THREE.PerspectiveCamera( 50, window.innerWidth / block_height, 0.01, 10 );
 // 	// 	camera.position.z = 5;
 // 	// 	camera.position.x= 1;
@@ -208,4 +259,4 @@ function Box(props:{position:THREE.Vector3,scale:THREE.Vector3,rotation:any}) {
 // }
 
 // // init("three_canva")
-// export default ThreeBlock 
+export default ThreeBlock 

@@ -1,5 +1,5 @@
 import React from 'react';
-// import ThreeBlock from './component/mainpage/Three_block';
+import ThreeBlock from './component/mainpage/Three_block';
 import ImageBlockList from './component/mainpage/Image_block';
 import IconBlockList, {  BlockInfo } from './component/mainpage/Icon_block';
 
@@ -70,8 +70,9 @@ let site:Array<BlockInfo>= [
     // <div className="bg-gradient-to-r from-blue to-pink">
     // <div className="w-fullscreen h-fullscreen p-0 m-0 "style={{ backgroundImage: "url("+backgroundImage+")" }} >
     <div className="bg-[#09110c]">
-        <style>
-        </style>
+        {/* <div className='mx-auto w-3/4'> */}
+          <ThreeBlock />
+        {/* </div> */}
         {/* <div className="ball_y w-48 bg-[#2b00ff]"></div>*/}
         {/* <div className="ball_y w-24 bg-blue"></div>  */}
         <Ball className='w-32 bg-[#e893fb]' delay={-6}></Ball>

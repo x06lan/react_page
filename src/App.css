@@ -61,7 +61,8 @@
 .moveing_x{
   @apply
   h-full;
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   animation-name:moveing_anime_x;
   animation-duration: 3s;
   animation-direction: alternate;
