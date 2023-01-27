@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect} from 'react';
 import ThreeBlock from './component/mainpage/Three_block';
 import ImageBlockList from './component/mainpage/Image_block';
 import IconBlockList, {  BlockInfo } from './component/mainpage/Icon_block';
@@ -63,15 +63,33 @@ let site:Array<BlockInfo>= [
     { name: "cloth", src: "./img/work/girl_with_cloth.png", href: "https://www.artstation.com/artwork/xYO1z4",time:20210829},
     { name: "night city", src: "./img/work/night_city.png", href: "https://www.artstation.com/artwork/G82DbW",time:20220319},
 ]
+let mouse={x:0,y:0}
   const darkTheme=window.matchMedia("(prefers-color-scheme: dark)");
   console.log(darkTheme.matches)
+	const handleMouseMove = (ev:any)=>{
+		const windowHalfX = window.innerWidth / 2;
+		const windowHalfY = window.innerHeight / 2;
+		let tem={x:0,y:0};
+		tem.x = ( ev.clientX - windowHalfX ) /windowHalfX/2;
+		tem.y = ( ev.clientY - windowHalfY ) / windowHalfY/2;
+		mouse=tem;
+	}
+	useEffect(()=>{
+		window.addEventListener('mousemove',handleMouseMove);
+		return () => {
+			window.removeEventListener(
+				'mousemove',
+				handleMouseMove
+			);
+		};
+	})
   
   return (
     // <div className="bg-gradient-to-r from-blue to-pink">
     // <div className="w-fullscreen h-fullscreen p-0 m-0 "style={{ backgroundImage: "url("+backgroundImage+")" }} >
     <div className="bg-[#09110c]">
         {/* <div className='mx-auto w-3/4'> */}
-          <ThreeBlock />
+          <ThreeBlock mouse={mouse}/>
         {/* </div> */}
         {/* <div className="ball_y w-48 bg-[#2b00ff]"></div>*/}
         {/* <div className="ball_y w-24 bg-blue"></div>  */}

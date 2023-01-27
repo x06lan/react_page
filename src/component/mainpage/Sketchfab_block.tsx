@@ -5,6 +5,7 @@ function SketchfabBlock(props:{name:string,sketchfab_id: string}) {
     useEffect(() => {
         setSrc("https://sketchfab.com/models/"+props.sketchfab_id+"/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark")
     }, [props.sketchfab_id]);
+    // window.onchange = () => {
     
     return ( 
         <div className="main-block">
