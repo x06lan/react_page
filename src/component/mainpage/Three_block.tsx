@@ -30,13 +30,6 @@ function Box(props:info) {
 	const [hovered, setHover] = useState(false)
 	const [active, setActive] = useState(false)
 	let math=create(all)
-	// let noise = new Perlin(math.random());
-	// useFrame((state,delta)=>{
-	// 	// mesh.current.scale=toVector3(0.1)
-	// 	// mesh.current.s
-
-	// })
-
 	return (
 	  <mesh
 		position={toVector3(props.position)}
@@ -139,7 +132,7 @@ function Cubes(props:any){
 						noisePosition.x=index_x*gap*noiseGap+time*speed
 						noisePosition.y=index_y*gap*noiseGap+time*speed
 						noisePosition.z=index_z*gap*noiseGap+time*speed
-						const newSize=(noise.get3(noisePosition)*1.2+0.6)
+						const newSize=(noise.get3(noisePosition)*0.6+0.3)
 						tempObject.scale.set(newSize, newSize, newSize)
 						tempObject.position.set(index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap)
 						tempObject.updateMatrix()
@@ -150,27 +143,10 @@ function Cubes(props:any){
 			console.log("ok")
 			instanceRef.current.instanceMatrix.needsUpdate = true
 		}
-
-		// console.log(mouse);
 	})
-	// console.log(props.mouse)
-	// for (let index_x= 1; index_x <= size; index_x++) {
-	// 	for(let index_y=1; index_y<=size;index_y++){
-	// 		for(let index_z=1; index_z<=size;index_z++){
-	// 			let tem:info={};
-	// 			tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
-	// 			let newSize=noise.get3(toVector3(tem.position))*0.2+0.1
-	// 			// let newSize=0.1;
-	// 			tem.scale=[newSize,newSize,newSize]
-	// 			tem.ids=[index_x,index_y,index_z]
-	// 			cubes.push(tem)
-	// 		}
-	// 	}
-	// }
 	return (
 		<group ref={groupRef} scale={1.1} >
 			<instancedMesh ref={instanceRef} args={[,,1000]}>
-				{/* <Box info={cubes[0]}></Box> */}
 				<boxGeometry args={[.6,.6,.6]}>
 
 				</boxGeometry>
@@ -188,7 +164,7 @@ function ThreeBlock(props:any) {
 	let block_height=600
 
 	return (
-		<div className={"mx-auto h-v2/3 aspect-square"} >
+		<div className={"mx-auto w-v2/3 aspect-square"} >
 		<Canvas  frameloop="always" >
 			<Cubes ></Cubes>
 			{/* <ambientLight /> */}
