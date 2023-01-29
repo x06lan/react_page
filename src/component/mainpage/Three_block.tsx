@@ -90,7 +90,7 @@ function Cubes(props:any){
 	// let cubes=[];
 	const size=10
 	const gap=0.2;
-	const noiseGap=0.5;
+	const noiseGap=0.7;
 	const speed=0.2
 	let groupRef=React.createRef<THREE.Group>()
 	let instanceRef=React.createRef<THREE.InstancedMesh>()
@@ -164,7 +164,7 @@ function ThreeBlock(props:any) {
 	let block_height=600
 
 	return (
-		<div className={"mx-auto w-v2/3 aspect-square"} >
+		<div className={"mx-auto max-w-[1000px] w-v2/3 aspect-square"} >
 		<Canvas  frameloop="always" >
 			<Cubes ></Cubes>
 			{/* <ambientLight /> */}

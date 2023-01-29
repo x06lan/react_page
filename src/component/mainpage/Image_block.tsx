@@ -6,7 +6,6 @@ type propsType ={
     info: BlockInfo[];
 }
 const ImageBlock=React.forwardRef((props:BlockInfo,ref:any)=>{
-    // let ref=useRef(null);
     function ImgText({src,text,sketchfab_id}:{src:string,text:string,sketchfab_id?:string}):JSX.Element{
         if(sketchfab_id!==undefined && sketchfab_id){
             return(
