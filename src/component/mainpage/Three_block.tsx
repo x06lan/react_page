@@ -4,6 +4,7 @@ import {Canvas, useFrame ,useThree} from '@react-three/fiber';
 
 import {create,all, rotate}from 'mathjs'
 // import { Perlin } from 'three-noise';
+import { Perlin } from './three-noise.js';
 import React, { useEffect, useRef,useState,useMemo}  from 'react';
 
 type info={
@@ -28,6 +29,14 @@ function Box(props:info) {
 	const mesh= useRef<THREE.Mesh>(null!)
 	const [hovered, setHover] = useState(false)
 	const [active, setActive] = useState(false)
+	let math=create(all)
+	// let noise = new Perlin(math.random());
+	// useFrame((state,delta)=>{
+	// 	// mesh.current.scale=toVector3(0.1)
+	// 	// mesh.current.s
+
+	// })
+
 	return (
 	  <mesh
 		position={toVector3(props.position)}
@@ -36,9 +45,10 @@ function Box(props:info) {
 		// scale={active ? 1.5 : 1}
 		scale={toVector3(props.scale)}
         // rotation={rotation}
-		onClick={(event) => setActive(!active)}
-		onPointerOver={(event) => setHover(true)}
-		onPointerOut={(event) => setHover(false)}>
+		// onClick={(event) => setActive(!active)}
+		// onPointerOver={(event) => setHover(true)}
+		// onPointerOut={(event) => setHover(false)}
+		>
 		<boxGeometry args={[1,1,1]} />
 		{/* <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} /> */}
 		<meshNormalMaterial></meshNormalMaterial>
@@ -73,24 +83,24 @@ function Controlser(props:any){
 	
 	// let camPosition =new THREE.Vector3(0,5,0);
 	let targePosition =new THREE.Vector3(0,0,0);
-	// camera.position.set(camPosition.x,camPosition.y,camPosition.z);
-	// (targePosition-camPosition)
 	return useFrame((state,delta) => {
 		state.camera.position.set(1,2*state.mouse.y,5);
 		state.camera.lookAt(targePosition);
-		// camera.position.set(camPosition.x,camPosition.y,camPosition.z);
-		// camera.lookAt(targePosition);
 	})
-	// return useFrame
 
 }
 function Cubes(props:any){
 	const math = create(all)
-	let cubes=[];
-	let size=10
-	let gap=0.2
-	let [rotateY,setRotateY] = useState(0)
-	let ref=React.createRef<THREE.Group>()
+	let noise = new Perlin(math.random());
+	const tempObject = new THREE.Object3D()
+
+	// let cubes=[];
+	const size=10
+	const gap=0.2;
+	const noiseGap=0.5;
+	const speed=0.2
+	let groupRef=React.createRef<THREE.Group>()
+	let instanceRef=React.createRef<THREE.InstancedMesh>()
 	let mouse:mouseInfo = {x:0,y:0}
 	// let [mouse,setMouse] = useState({x:0,y:0})
 	// let dir=
@@ -112,36 +122,64 @@ function Cubes(props:any){
 		};
 	},[])
 	let euler=toEuler([math.pi/4,0,math.pi/4]);
-	useFrame((state,delta)=>{
+	useFrame((state,delta,frame)=>{
+		const time = state.clock.getElapsedTime()
 		
-		if(ref.current?.rotation){
-			// let temRotation = ref.current.rotation
-			// ref.current.setRotationFromEuler()
-			// console.log(mouse);
-			// console.log(state);
+		if(groupRef.current?.rotation){
 			euler.y+=state.mouse.x/30;
-			ref.current.setRotationFromEuler(euler)
+			groupRef.current.setRotationFromEuler(euler)
 		}
+		if(instanceRef.current){
+			let i=0
+			for (let index_x= 1; index_x <= size; index_x++) {
+				for(let index_y=1; index_y<=size;index_y++){
+					for(let index_z=1; index_z<=size;index_z++){
+						let id=i++;
+						let noisePosition=new THREE.Vector3()
+						noisePosition.x=index_x*gap*noiseGap+time*speed
+						noisePosition.y=index_y*gap*noiseGap+time*speed
+						noisePosition.z=index_z*gap*noiseGap+time*speed
+						const newSize=(noise.get3(noisePosition)*1.2+0.6)
+						tempObject.scale.set(newSize, newSize, newSize)
+						tempObject.position.set(index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap)
+						tempObject.updateMatrix()
+						instanceRef.current.setMatrixAt(id,tempObject.matrix)
+					}
+				}
+			}
+			console.log("ok")
+			instanceRef.current.instanceMatrix.needsUpdate = true
+		}
+
 		// console.log(mouse);
 	})
 	// console.log(props.mouse)
-	for (let index_x= 1; index_x <= size; index_x++) {
-		for(let index_y=1; index_y<=size;index_y++){
-			for(let index_z=1; index_z<=size;index_z++){
-				let tem:info={};
-				let s=0.1
-				tem.scale=[s,s,s]
-				tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
-				tem.ids=[index_x,index_y,index_z]
-				cubes.push(tem)
-			}
-		}
-	}
+	// for (let index_x= 1; index_x <= size; index_x++) {
+	// 	for(let index_y=1; index_y<=size;index_y++){
+	// 		for(let index_z=1; index_z<=size;index_z++){
+	// 			let tem:info={};
+	// 			tem.position=[index_x*gap-size/2*gap,index_y*gap-size/2*gap,index_z*gap-size/2*gap]
+	// 			let newSize=noise.get3(toVector3(tem.position))*0.2+0.1
+	// 			// let newSize=0.1;
+	// 			tem.scale=[newSize,newSize,newSize]
+	// 			tem.ids=[index_x,index_y,index_z]
+	// 			cubes.push(tem)
+	// 		}
+	// 	}
+	// }
 	return (
-		<group ref={ref} scale={1.1} >
-			{cubes.map((info,key)=>{
+		<group ref={groupRef} scale={1.1} >
+			<instancedMesh ref={instanceRef} args={[,,1000]}>
+				{/* <Box info={cubes[0]}></Box> */}
+				<boxGeometry args={[.6,.6,.6]}>
+
+				</boxGeometry>
+				<meshNormalMaterial/>
+
+			</instancedMesh>
+			{/* {cubes.map((info,key)=>{
 				return <Box  key={key} {...info} />
-			})}
+			})} */}
 		</group>
 	)
 
