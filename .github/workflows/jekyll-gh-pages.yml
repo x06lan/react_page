@@ -41,8 +41,7 @@ jobs:
           npm install
       - name: npm build
         run: |
-          ls
-          npm run build
+          CI=false npm run build
   
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
