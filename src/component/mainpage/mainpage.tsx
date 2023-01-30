@@ -64,25 +64,17 @@ let site:Array<BlockInfo>= [
     { name: "cloth", src: "./img/work/girl_with_cloth.png", href: "https://www.artstation.com/artwork/xYO1z4",time:20210829},
     { name: "night city", src: "./img/work/night_city.png", href: "https://www.artstation.com/artwork/G82DbW",time:20220319},
 ]
-let mouse={x:0,y:0}
+// let mouse={x:0,y:0}
   const darkTheme=window.matchMedia("(prefers-color-scheme: dark)");
   console.log(darkTheme.matches)
-	const handleMouseMove = (ev:any)=>{
-		const windowHalfX = window.innerWidth / 2;
-		const windowHalfY = window.innerHeight / 2;
-		let tem={x:0,y:0};
-		tem.x = ( ev.clientX - windowHalfX ) /windowHalfX/2;
-		tem.y = ( ev.clientY - windowHalfY ) / windowHalfY/2;
-		mouse=tem;
-	}
 	useEffect(()=>{
-		window.addEventListener('mousemove',handleMouseMove);
-		return () => {
-			window.removeEventListener(
-				'mousemove',
-				handleMouseMove
-			);
-		};
+		// window.addEventListener('mousemove',handleMouseMove);
+		// return () => {
+		// 	window.removeEventListener(
+		// 		'mousemove',
+		// 		handleMouseMove
+		// 	);
+		// };
 	})
   
   return (
@@ -90,7 +82,20 @@ let mouse={x:0,y:0}
     // <div className="w-fullscreen h-fullscreen p-0 m-0 "style={{ backgroundImage: "url("+backgroundImage+")" }} >
     <div className="bg-[#09110c]">
         {/* <div className='mx-auto w-3/4'> */}
-          <ThreeBlock mouse={mouse}/>
+          <div className='absolute top-52 left-[20%] w-fullscreen z-10'>
+            <div className='mx-auto'>
+              <h2 className='text-white text-6xl '>
+                x06lan
+              </h2>
+              {/* <br/> */}
+              <h5 className='text-white text-3xl w-2/3'>
+                Learning about 3D things
+              </h5>
+
+            </div>
+          </div>
+          <ThreeBlock />
+
         {/* <Ball className='w-32 bg-[#e893fb]' delay={-6}></Ball>
         <Ball className='w-48 bg-[#00fff2]' delay={-5}></Ball>
         <Ball className='w-52 bg-[#a2ff00]' delay={-4}></Ball>

@@ -140,7 +140,7 @@ function Cubes(props:any){
 					}
 				}
 			}
-			console.log("ok")
+			// console.log("ok")
 			instanceRef.current.instanceMatrix.needsUpdate = true
 		}
 	})
