@@ -1,11 +1,14 @@
-name: depoly
+name: deploy
+
 on:
   workflow_dispatch:
   push:
-    branch:
-      - main
+    branches:
+      - master
+
 permissions:
   contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -19,18 +22,17 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
 
-      run: node --version
-      run: npm --version
+      - run: node --version
+      - run: npm --version
 
-      - name: Install npm packages
+      - name: Install NPM Packages
         run: |
           npm install
-
-      - name: build 
+      - name: Start SSG
         run: |
           npm run build
-
-      - name: Depoly Gihub Pages
+          touch ./build/.nojekyll
+      - name: Deploy GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build
