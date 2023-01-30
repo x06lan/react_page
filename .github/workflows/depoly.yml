@@ -9,25 +9,25 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    steps:
-      - name: Clone Repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+  steps:
+    - name: Clone Repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
 
-      run: node --version
-      run: npm --version
+    run: node --version
+    run: npm --version
 
-      - name: Install npm packages
-        run: |
-          npm install
-      - name: build 
-        run: |
-          npm run build
-      - name: Depoly Gihub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: build
+    - name: Install npm packages
+      run: |
+        npm install
+    - name: build 
+      run: |
+        npm run build
+    - name: Depoly Gihub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: build
