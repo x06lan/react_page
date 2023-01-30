@@ -164,7 +164,7 @@ function ThreeBlock(props:any) {
 	let block_height=600
 
 	return (
-		<div className={"mx-auto max-w-[1000px] w-v2/3 aspect-square"} >
+		<div className={"mx-auto max-w-[1000px] w-v2/3 aspect-square sticky top-2"} >
 		<Canvas  frameloop="always" >
 			<Cubes ></Cubes>
 			{/* <ambientLight /> */}

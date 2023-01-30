@@ -1,4 +1,4 @@
-name:depoly
+name: depoly
 on:
   workflow_dispatch:
   push:

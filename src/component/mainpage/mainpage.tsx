@@ -87,8 +87,8 @@ let site:Array<BlockInfo>= [
               <h2 className='text-white text-6xl '>
                 x06lan
               </h2>
-              {/* <br/> */}
-              <h5 className='text-white text-3xl w-2/3'>
+              <br/>
+              <h5 className='text-white text-4xl w-2/3'>
                 Learning about 3D things
               </h5>
 
