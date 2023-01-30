@@ -34,6 +34,6 @@ jobs:
           touch ./build/.nojekyll
 
       - name: Deploy GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: JamesIves/github-pages-deploy-action@v3
         with:
           folder: build
