@@ -32,7 +32,7 @@ jobs:
           npm install
       - name: npm build
         run: |
-          npm run build
+          CI=false npm run build
           touch ./build/.nojekyll
           ls
 
