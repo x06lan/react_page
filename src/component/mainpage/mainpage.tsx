@@ -52,8 +52,8 @@ let site:Array<BlockInfo>= [
     { name: "three.js face boolean", src: "./img/work/face_boolean.png", href: "https://x06lan.github.io/three_js/face_boolean" },
     { name: "three.js 3D preview", src: "./img/work/3D_preview.png", href: "https://x06lan.github.io/three_js/load_obj" },
     { name: "matter.js 2D chain", src: "./img/work/chain.png", href: "https://x06lan.github.io/matter_js/chain" },
-    { name: "Alastor Scepter", src: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", sketchfab_id:"648fdc5276c14878b3892370bda9f4da",time:20210809},
-    { name: "Stolas grimoire", src: "", href: "https://sketchfab.com/3d-models/book-unapp-0a98459ea48546b480eaa3c80f8bc748", sketchfab_id:"0a98459ea48546b480eaa3c80f8bc748",time:20210816},
+    // { name: "Alastor Scepter", src: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", sketchfab_id:"648fdc5276c14878b3892370bda9f4da",time:20210809},
+    // { name: "Stolas grimoire", src: "", href: "https://sketchfab.com/3d-models/book-unapp-0a98459ea48546b480eaa3c80f8bc748", sketchfab_id:"0a98459ea48546b480eaa3c80f8bc748",time:20210816},
     { name: "diamond materials", src: "./img/work/diman.png", href: "https://www.artstation.com/artwork/3dJXRY",time:20210819},
     { name: "water simulation", src: "./img/work/water.png", href: "https://www.artstation.com/artwork/rAgENG",time:20210820},
     { name: "intel IC", src: "./img/work/ic.png", href: "https://www.artstation.com/artwork/48Y9Zn",time:20210821},
@@ -68,20 +68,10 @@ let site:Array<BlockInfo>= [
   const darkTheme=window.matchMedia("(prefers-color-scheme: dark)");
   console.log(darkTheme.matches)
 	useEffect(()=>{
-		// window.addEventListener('mousemove',handleMouseMove);
-		// return () => {
-		// 	window.removeEventListener(
-		// 		'mousemove',
-		// 		handleMouseMove
-		// 	);
-		// };
 	})
   
   return (
-    // <div className="bg-gradient-to-r from-blue to-pink">
-    // <div className="w-fullscreen h-fullscreen p-0 m-0 "style={{ backgroundImage: "url("+backgroundImage+")" }} >
     <div className="bg-[#09110c]">
-        {/* <div className='mx-auto w-3/4'> */}
           <div className='absolute top-52 left-[20%] w-fullscreen z-10'>
             <div className='mx-auto'>
               <h2 className='text-white text-6xl '>

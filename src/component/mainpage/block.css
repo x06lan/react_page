@@ -51,7 +51,7 @@
 .icon-animation{
     @apply
     /* hover:w-1/3 */
-    hover:scale-125
+    hover:scale-[1.05]
     /* sm:hover:scale-125 */
     /* md:hover:scale-125 */
     /* sm:hover:w-20*/
